@@ -17,23 +17,3 @@ services:
     image: ghcr.io/mealie-recipes/mealie:v2.7.1@sha256:708e9ffb843bafdcebf46ee35bb45d1b003518e8c204483a1da039b4076ef980
     container_name: mealie
     restart: always
-    volumes:
-      - ./mealie/data:/app/data/
-      - ./mealie/config:/app/config/:ro
-    deploy:
-      resources:
-        limits:
-          memory: 1000M
-    environment:
-      - TOKEN_TIME=168 # hours
-      - PUID=1 # easier for performing backups
-      - PGID=1 # easier for performing backups
-      - BASE_URL=https://$ROOT_DOMAIN
-      - DEFAULT_EMAIL=mealie@$ROOT_DOMAIN
-      - LOG_CONFIG_OVERRIDE=/app/config/logconf.json
-    labels:
-      - homepage.group=Service
-      - homepage.name=Mealie
-      - homepage.icon=mealie.svg
-      - homepage.href=https://cook.$ROOT_DOMAIN/
-      - homepage.description=Recipes
